@@ -11,11 +11,10 @@
 <img src="https://img.shields.io/badge/spring_boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
 <img src="https://img.shields.io/badge/spring_security-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white">
 <img src="https://img.shields.io/badge/apache_tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=white">
-<tr>
+
 <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"><a>
 <img src="https://img.shields.io/badge/redis-DC382D?style=for-the-badge&logo=redis&logoColor=white">
 <img src="https://img.shields.io/badge/DOCKER-007396?style=for-the-badge&logo=DOCKER&logoColor=white"></a>
-</tr>
 
 ## 🔖 프로젝트 관리
 
@@ -32,8 +31,8 @@
     </tr>
   </thead>
    <tr>
-        <td align=center><a href="https://github.com/rrrmina">김태현 @taehyeon</a></td>
-        <td align=center><a href="https://github.com/Sion99">김세연 @seykim</a></td>
-        <td align=center><a href="https://github.com/kylew1004">신원희 @wonhshin</a></td>
+        <td align=center><a href="https://github.com/taehyeon3">김태현 @taehyeon</a></td>
+        <td align=center><a href="https://github.com/seyeon22222">김세연 @seykim</a></td>
+        <td align=center><a href="https://github.com/wonies">신원희 @wonhshin</a></td>
     </tr>
 </table>
