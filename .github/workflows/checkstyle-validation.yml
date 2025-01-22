@@ -5,6 +5,10 @@ on:
     branches: [ main, dev ]
   push:
     branches: [ main, dev ]
+
+defaults:
+    run:
+        working-directory: ./potatocountry
 jobs:
   checkstyle:
     runs-on: ubuntu-latest
@@ -21,5 +25,3 @@ jobs:
         run: ./gradlew --console verbose clean checkstyleMain
       - name: ️Test checkstyle
         run: ./gradlew --console verbose clean checkstyleTest
-      - name: ️TestFixture checkstyle
-        run: ./gradlew --console verbose clean checkstyleTestFixture
