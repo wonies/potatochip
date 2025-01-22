@@ -9,6 +9,10 @@ on:
 defaults:
     run:
         working-directory: ./potatocountry
+
+permissions:
+    contents: read
+
 jobs:
   checkstyle:
     runs-on: ubuntu-latest
