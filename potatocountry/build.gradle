@@ -48,6 +48,7 @@ test {
 	useJUnitPlatform()
 	ignoreFailures = false
 	finalizedBy jacocoTestReport
+	finalizedBy jacocoTestCoverageVerification
 }
 
 jacoco {
@@ -67,9 +68,14 @@ jacocoTestReport {
 jacocoTestCoverageVerification {
 	violationRules {
 		rule {
+			element = 'CLASS'
 			limit {
+				counter = 'LINE'
+				value = 'COVEREDRATIO'
 				minimum = 0.5
 			}
 		}
 	}
 }
+
+check.dependsOn jacocoTestCoverageVerification
