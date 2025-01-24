@@ -29,14 +29,14 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew build
+      - name: Debug event info
+        run: |
+          echo "Event name: ${{ github.event_name }}"
+          echo "Branch: ${{ github.ref }}"
+          echo "SHA: ${{ github.sha }}"
 
       - name: Test with Gradle
-        run: |
-          ./gradlew test jacocoTestReport
-          if [ $? -ne 0 ]; then
-            echo "Tests failed"
-            exit 1
-          fi
+        run: ./gradlew test jacocoTestReport
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
