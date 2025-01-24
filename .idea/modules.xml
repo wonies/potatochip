@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/potatochip.iml" filepath="$PROJECT_DIR$/.idea/potatochip.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/potatocountry.iml" filepath="$PROJECT_DIR$/.idea/modules/potatocountry.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/potatocountry.main.iml" filepath="$PROJECT_DIR$/.idea/modules/potatocountry.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/potatocountry.test.iml" filepath="$PROJECT_DIR$/.idea/modules/potatocountry.test.iml" />
     </modules>
   </component>
 </project>
