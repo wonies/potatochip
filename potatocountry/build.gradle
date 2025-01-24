@@ -45,6 +45,8 @@ checkstyle {
 }
 
 test {
+	useJUnitPlatform()
+	ignoreFailures = false
 	finalizedBy jacocoTestReport
 }
 

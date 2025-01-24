@@ -31,7 +31,12 @@ jobs:
         run: ./gradlew build
 
       - name: Test with Gradle
-        run: ./gradlew test jacocoTestReport
+        run: |
+          ./gradlew test jacocoTestReport
+          if [ $? -ne 0 ]; then
+            echo "Tests failed"
+            exit 1
+          fi
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
