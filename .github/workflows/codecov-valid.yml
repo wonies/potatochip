@@ -20,6 +20,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Set up JDK
         uses: actions/setup-java@v4
@@ -29,11 +32,6 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew build
-      - name: Debug event info
-        run: |
-          echo "Event name: ${{ github.event_name }}"
-          echo "Branch: ${{ github.ref }}"
-          echo "SHA: ${{ github.sha }}"
 
       - name: Test with Gradle
         run: ./gradlew test jacocoTestReport
