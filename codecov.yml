@@ -1,0 +1,12 @@
+coverage:
+  status:
+    project:
+      default:
+        target: 50%
+        paths:
+          - "src/main/java/com/potatocountry/"
+    patch:
+      default:
+        target: 50%
+        paths:
+          - "src/main/java/com/potatocountry/"
