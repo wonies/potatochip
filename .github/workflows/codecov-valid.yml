@@ -17,25 +17,10 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{ github.event.pull_request.head.sha }}
-
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.ref }}
-          fetch-depth: 0
-      - name: Git info
-        run: |
-          git remote -v
-          git log --oneline -n 5
-          git status
-          echo "Current branch is $GITHUB_REF"
-          echo "Current sha is $(git rev-parse HEAD)"
 
       - name: Set up JDK
         uses: actions/setup-java@v4
@@ -47,7 +32,11 @@ jobs:
         run: ./gradlew build
 
       - name: Test with Gradle
-        run: ./gradlew test jacocoTestReport
+        run: |
+          ./gradlew test jacocoTestReport
+          test_exit_code=$?
+          echo "Test exit code: $test_exit_code"
+          exit $test_exit_code
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
