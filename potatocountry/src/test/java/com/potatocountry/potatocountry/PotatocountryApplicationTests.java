@@ -8,6 +8,7 @@ class PotatocountryApplicationTests {
 
 	@Test
 	void contextLoads() {
+		PotatocountryApplication.main(new String[]{});
 	}
 
 }
