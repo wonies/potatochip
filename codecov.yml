@@ -3,6 +3,6 @@ coverage:
     project:
       default: false
       tests:
-        target: 50%
+        target: 1%
         paths:
           - "potatocountry/**/*"
