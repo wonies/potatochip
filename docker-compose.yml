@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  backend:
+    image: potato-chips
+    container_name: potato_chip
+    ports:
+      - "8081:8080"
+    depends_on:
+      - redis
+      - mysql
+    networks:
+      - backend
+      - frontend
+
+  frontend:
+    image: potatochipfront
+    container_name: potato_chip_front
+    ports:
+      - "5174:5174"
+    environment:
+      - VITE_API_URL=http://backend:8081
+      - HOST=0.0.0.0
+    networks:
+      - frontend
+
+  redis:
+    image: "redis:7"
+    container_name: redis_server
+    ports:
+      - "6379:6379"
+    networks:
+      - backend
+
+  mysql:
+    image: "mysql:8"
+    container_name: mysql_server
+    restart: always
+    ports:
+      - "3306:3306"
+    networks:
+      - backend
+
+
+networks:
+  backend:
+    driver: bridge
+  frontend:
+    driver: bridge
