@@ -18,6 +18,8 @@ permissions:
 jobs:
   checkstyle:
     runs-on: ubuntu-latest
+    env:
+      DB_URL: ${{ secrets.DB_URL }}
     steps:
       - uses: actions/checkout@v4
       - name: set up JDK 21
