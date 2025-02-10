@@ -31,7 +31,6 @@ services:
       - "6379:6379"
     networks:
       - backend
-
   mysql:
     image: "mysql:8"
     container_name: mysql_server
@@ -40,7 +39,6 @@ services:
       - "3306:3306"
     networks:
       - backend
-
 
 networks:
   backend:
