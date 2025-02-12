@@ -34,5 +34,6 @@ jobs:
       - name: Debug environment
         run: |
           echo "DB_URL=$DB_URL"
+          echo "GITHUB"
       - name: Build with Gradle
         run: ./gradlew clean build -x test
