@@ -1,0 +1,56 @@
+name: 📊 Run tests and upload coverage
+run-name: ${{ github.actor }} is Code cov 🚀
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+defaults:
+  run:
+    working-directory: ./potatocountry
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Make docker-compose.yml
+        run: echo "${{ secrets.DOCKER_COMPOSE_YML }}" | base64 -d > docker-compose.yml
+
+      - name: Run docker
+        run: docker compose -f "docker-compose.yml" up -d mysql-potato redis-potato
+
+      - name: Wait for MySQL
+        run: |
+          while ! docker exec mysql-potato mysqladmin ping -h localhost --silent; do
+            echo "Waiting for MySQL..."
+            sleep 2
+          done
+
+      - name: Make application.yml
+        run: |
+          cd ./src/main/resources
+          echo "${{ secrets.APPLICATION_YML }}" | base64 -d > application.yml
+
+      - name: Build with Gradle
+        run: ./gradlew build
+
+      - name: Test with Gradle
+        run: ./gradlew test jacocoTestReport
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./build/reports/jacoco/test/jacocoTestReport.xml
