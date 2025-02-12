@@ -1,12 +1,13 @@
 spring:
-  application:
-    name: potatocountry
-  h2:
-    console:
-      enabled: true
   datasource:
-    url: ${DB_URL}
+    url: jdbc:mysql://localhost:4306/potatodb
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: true
+  data:
+    redis:
+      host: localhost
+      port: 4379
